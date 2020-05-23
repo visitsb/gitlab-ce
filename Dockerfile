@@ -11,6 +11,7 @@ RUN /usr/bin/apt-get update \
     && /bin/sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen \
     && /usr/sbin/dpkg-reconfigure --frontend=noninteractive locales \
     && /usr/bin/localedef -v -c -i en_US -f UTF-8 en_US.UTF-8 \
+    && /bin/chmod +x /assets/entry \
     ; exit 0
 ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
