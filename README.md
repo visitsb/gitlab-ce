@@ -1,0 +1,1 @@
+Fixes official `https://hub.docker.com/r/gitlab/gitlab-ce` for locale settings and permissions
