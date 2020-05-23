@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Sometimes there is an E_ACCESS error when standalone Docker run
+# https://github.com/sameersbn/docker-gitlab/issues/1022#issuecomment-366349898
+/bin/rm -rf /var/log/gitlab/*
+
+# One-time fix despite running update-permissions (ignore exit codes)
+# https://gitlab.com/gitlab-org/omnibus-gitlab/issues/2976
+/assets/update-permissions
+/bin/chmod -Rf 2770 /var/opt/gitlab/git-data/repositories
+
+# Proceed to standard gitlab CMD
+# https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/docker/Dockerfile
+/assets/wrapper
